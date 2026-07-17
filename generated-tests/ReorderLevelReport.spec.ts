@@ -24,7 +24,7 @@ test.describe('Reorder Level Report', () => {
     await page.waitForSelector('table.advance-table');
   });
 
-  test('TC-INV-016: Verify Reorder Level Report view structure and defaults', async ({ page }) => {
+  test('TC-INV-016 - Verify Reorder Level Report view structure and defaults', async ({ page }) => {
     // 1. Verify headers
     const headers = page.locator('table.advance-table th');
     const headerTexts = await headers.allInnerTexts();
@@ -40,7 +40,7 @@ test.describe('Reorder Level Report', () => {
     expect(currentWarehouseText.length).toBeGreaterThan(0);
   });
 
-  test('TC-INV-017: Verify Download Reorder Level Report', async ({ page }) => {
+  test('TC-INV-017 - Verify Download Reorder Level Report', async ({ page }) => {
     // Start waiting for download before clicking
     const downloadPromise = page.waitForEvent('download');
     await page.locator('button[title="Download Reorder Level Report"]').click();

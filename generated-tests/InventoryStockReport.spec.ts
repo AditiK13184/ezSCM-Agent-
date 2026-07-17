@@ -24,7 +24,7 @@ test.describe('Inventory Stock Report', () => {
     await page.waitForSelector('table.advance-table');
   });
 
-  test('TC-INV-019: Verify view structure and table columns', async ({ page }) => {
+  test('TC-INV-019 - Verify view structure and table columns', async ({ page }) => {
     // 1. Verify headers
     const headers = page.locator('table.advance-table th');
     const headerTexts = await headers.allInnerTexts();
@@ -37,7 +37,7 @@ test.describe('Inventory Stock Report', () => {
     await expect(rows).toHaveCount(30);
   });
 
-  test('TC-INV-020: Verify Date Range picker modal and filtering', async ({ page }) => {
+  test('TC-INV-020 - Verify Date Range picker modal and filtering', async ({ page }) => {
     // Locate the date range button using its text matching standard date pattern (dd/mm/yyyy - dd/mm/yyyy)
     const dateRangeBtn = page.locator('div[role="button"]', { hasText: /\d{2}\/\d{2}\/\d{4} - \d{2}\/\d{2}\/\d{4}/ });
     await expect(dateRangeBtn).toBeVisible();

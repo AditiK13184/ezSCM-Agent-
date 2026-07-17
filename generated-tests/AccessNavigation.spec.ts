@@ -21,7 +21,7 @@ test.describe('Access & Navigation', () => {
     await page.waitForURL('**/user/lobby');
   });
 
-  test('TC-INV-001: Verify access to the Inventory module from Lobby Dashboard', async ({ page }) => {
+  test('TC-INV-001 - Verify access to the Inventory module from Lobby Dashboard', async ({ page }) => {
     // Locate the left sidebar navigation item with text "Inventory"
     const inventorySidebarItem = page.locator('.lp-sidebar-item', { hasText: /^Inventory$/ });
     await expect(inventorySidebarItem).toBeVisible();
@@ -37,7 +37,7 @@ test.describe('Access & Navigation', () => {
     await expect(pageHeader).toBeVisible();
   });
 
-  test('TC-INV-002: Verify sub-navigation tab active states and routing', async ({ page }) => {
+  test('TC-INV-002 - Verify sub-navigation tab active states and routing', async ({ page }) => {
     // Navigate directly to Inventory Reports main page
     const reportsUrl = BASE_URL.replace(/\/$/, '') + '/user/inventory/reports';
     await page.goto(reportsUrl);

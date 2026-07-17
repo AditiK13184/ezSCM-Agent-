@@ -24,7 +24,7 @@ test.describe('Inventory Report (Main List View)', () => {
     await page.waitForSelector('table.advance-table');
   });
 
-  test('TC-INV-003: Verify default state of the Inventory Report table', async ({ page }) => {
+  test('TC-INV-003 - Verify default state of the Inventory Report table', async ({ page }) => {
     // 1. Verify headers
     const headers = page.locator('table.advance-table th');
     const headerTexts = await headers.allInnerTexts();
@@ -43,7 +43,7 @@ test.describe('Inventory Report (Main List View)', () => {
     await expect(summaryText).toContainText('1 to 20');
   });
 
-  test('TC-INV-004: Verify search by item name with valid matching records', async ({ page }) => {
+  test('TC-INV-004 - Verify search by item name with valid matching records', async ({ page }) => {
     const searchInput = page.locator('input[placeholder="Search"]');
     await searchInput.fill('glass');
     await searchInput.press('Enter');
@@ -62,7 +62,7 @@ test.describe('Inventory Report (Main List View)', () => {
     }
   });
 
-  test('TC-INV-005: Verify search with a non-existent item name', async ({ page }) => {
+  test('TC-INV-005 - Verify search with a non-existent item name', async ({ page }) => {
     const searchInput = page.locator('input[placeholder="Search"]');
     await searchInput.fill('XYZ123ABC');
     await searchInput.press('Enter');
@@ -74,7 +74,7 @@ test.describe('Inventory Report (Main List View)', () => {
     await expect(rows).toHaveCount(0);
   });
 
-  test('TC-INV-007: Verify Sort By Name functionality', async ({ page }) => {
+  test('TC-INV-007 - Verify Sort By Name functionality', async ({ page }) => {
     // Click Sort By trigger
     await page.locator('button', { hasText: 'Sort By' }).click();
 
@@ -88,7 +88,7 @@ test.describe('Inventory Report (Main List View)', () => {
     expect(nameTexts).toEqual(sortedNames);
   });
 
-  test('TC-INV-008: Verify Sort By SKU / Master SKU functionality', async ({ page }) => {
+  test('TC-INV-008 - Verify Sort By SKU / Master SKU functionality', async ({ page }) => {
     // Click Sort By trigger
     await page.locator('button', { hasText: 'Sort By' }).click();
 
@@ -102,7 +102,7 @@ test.describe('Inventory Report (Main List View)', () => {
     expect(skuTexts).toEqual(sortedSkus);
   });
 
-  test('TC-INV-009: Verify filtering table by Warehouse selection', async ({ page }) => {
+  test('TC-INV-009 - Verify filtering table by Warehouse selection', async ({ page }) => {
     const defaultRowCount = await page.locator('table.advance-table tbody tr').count();
 
     // Click Warehouse dropdown trigger
@@ -122,7 +122,7 @@ test.describe('Inventory Report (Main List View)', () => {
     expect(filteredRowCount).toBeGreaterThanOrEqual(0);
   });
 
-  test('TC-INV-010: Verify filtering table by Item Type selection', async ({ page }) => {
+  test('TC-INV-010 - Verify filtering table by Item Type selection', async ({ page }) => {
     // Click Item Type dropdown trigger
     await page.locator('button:has-text("Select Item Type")').click();
     await page.waitForTimeout(500);
@@ -136,7 +136,7 @@ test.describe('Inventory Report (Main List View)', () => {
     expect(rowCount).toBeGreaterThanOrEqual(0);
   });
 
-  test('TC-INV-011: Verify filtering table using Item Category Checkboxes', async ({ page }) => {
+  test('TC-INV-011 - Verify filtering table using Item Category Checkboxes', async ({ page }) => {
     const initialRowCount = await page.locator('table.advance-table tbody tr').count();
 
     // Toggle "Production Items" checkbox
@@ -148,7 +148,7 @@ test.describe('Inventory Report (Main List View)', () => {
     expect(afterToggleRowCount).not.toEqual(initialRowCount);
   });
 
-  test('TC-INV-012: Verify infinite scroll pagination behavior', async ({ page }) => {
+  test('TC-INV-012 - Verify infinite scroll pagination behavior', async ({ page }) => {
     // Assert 20 rows originally
     await expect(page.locator('table.advance-table tbody tr')).toHaveCount(20);
 
@@ -167,7 +167,7 @@ test.describe('Inventory Report (Main List View)', () => {
     await expect(summaryText).toContainText('1 to 30');
   });
 
-  test('TC-INV-014: Verify Download Inventory Report functionality', async ({ page }) => {
+  test('TC-INV-014 - Verify Download Inventory Report functionality', async ({ page }) => {
     // Start waiting for download before clicking
     const downloadPromise = page.waitForEvent('download');
     await page.locator('button[title="Download Inventory Report"]').click();
@@ -177,7 +177,7 @@ test.describe('Inventory Report (Main List View)', () => {
     expect(download.suggestedFilename()).not.toBeNull();
   });
 
-  test('TC-INV-015: Verify Download Batchwise Report functionality', async ({ page }) => {
+  test('TC-INV-015 - Verify Download Batchwise Report functionality', async ({ page }) => {
     const downloadPromise = page.waitForEvent('download');
     await page.locator('button[title="Download Batchwise Report"]').click();
     const download = await downloadPromise;

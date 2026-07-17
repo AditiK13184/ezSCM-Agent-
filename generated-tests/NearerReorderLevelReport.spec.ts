@@ -22,7 +22,7 @@ test.describe('Nearer Reorder Level Report', () => {
     await page.waitForURL('**/user/inventory/nearerReorderReport');
   });
 
-  test('TC-INV-018: Verify view structure and empty state when no items are nearing reorder limits', async ({ page }) => {
+  test('TC-INV-018 - Verify view structure and empty state when no items are nearing reorder limits', async ({ page }) => {
     // 1. Verify table is absent (since there are no records)
     const table = page.locator('table.advance-table');
     await expect(table).not.toBeVisible();
